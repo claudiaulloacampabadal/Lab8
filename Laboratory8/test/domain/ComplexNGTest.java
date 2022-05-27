@@ -81,10 +81,10 @@ public class ComplexNGTest {
         System.out.println("Array 4 (shellSort)" + util.Utility.show(array4, 100));
         
         //array 5 ordenado   
-//        if (!isSorted(array5)) {
-//            sort.radixSort(array5, 0);
-//        }
-//        System.out.println("Array 5 (radixSort)" + util.Utility.show(array5));
+        if (!isSorted(array5)) {
+            sort.radixSort(array5, 0);
+        }
+        System.out.println("Array 5 (radixSort)" + util.Utility.show(array5));
 
         //array 6 ordenado
         if (!isSorted(array6)) {
@@ -92,10 +92,123 @@ public class ComplexNGTest {
             sort.mergeSort(array6, temp2, 0, array6.length - 1);
         }
         System.out.println("Array 6 (mergeSort)" + util.Utility.show(array6, 100));
-
-      
+        
+         //buscamos los 20 elementos en cada array
+         //array1
+        Search s = new Search();
+        for (int i = 0; i < 20; i++) {
+            Object object = array1[i];
+            Object value = util.Utility.random();
+            int pos = s.binarySearch(array1, value);
+            System.out.println(pos != -1
+                    ? "Iteractive Binary Search. ARRAY1\n"
+                    + "The value [" + value + "] exists at position: " + pos
+                    : "The value [" + value + "] does not exist"
+            );
+            pos = s.binarySearch(array1, value, 0, array1.length-1);
+        System.out.println(pos!=-1
+                   ?"Recursive Binary Search. ARRAY1\n"
+                   +"The value ["+value+"] exists at position: "+pos
+                   :"The value ["+value+"] does not exist"
+        );
+        }
+        
+        //array2
+        Search s2 = new Search();
+        for (int i = 0; i < 20; i++) {
+            Object object = array2[i];
+            String word = GenerarPalabra();
+            int pos = s2.binarySearch(array2, word);
+            System.out.println(pos != -1
+                    ? "Iteractive Binary Search. ARRAY2\n"
+                    + "The word [" + word + "] exists at position: " + pos
+                    : "The word [" + word + "] does not exist"
+            );
+            pos = s2.binarySearch(array2, word, 0, array2.length-1);
+        System.out.println(pos!=-1
+                   ?"Recursive Binary Search. ARRAY2\n"
+                   +"The word ["+word+"] exists at position: "+pos
+                   :"The word ["+word+"] does not exist"
+        );
+        }
+        
+        //array3
+        Search s3 = new Search();
+        for (int i = 0; i < 20; i++) {
+            Object object = array3[i];
+            Object value = util.Utility.random();
+            int pos = s3.binarySearch(array3, value);
+            System.out.println(pos != -1
+                    ? "Iteractive Binary Search. ARRAY3\n"
+                    + "The value [" + value + "] exists at position: " + pos
+                    : "The value [" + value + "] does not exist"
+            );
+            pos = s3.binarySearch(array3, value, 0, array3.length-1);
+        System.out.println(pos!=-1
+                   ?"Recursive Binary Search. ARRAY3\n"
+                   +"The value ["+value+"] exists at position: "+pos
+                   :"The value ["+value+"] does not exist"
+        );
+        }
+        
+        //array4
+        Search s4 = new Search();
+        for (int i = 0; i < 20; i++) {
+            Object object = array4[i];
+            String word = GenerarPalabra();
+            int pos = s4.binarySearch(array4, word);
+            System.out.println(pos != -1
+                    ? "Iteractive Binary Search. ARRAY4\n"
+                    + "The word [" + word + "] exists at position: " + pos
+                    : "The word [" + word + "] does not exist"
+            );
+            pos = s4.binarySearch(array4, word, 0, array4.length-1);
+        System.out.println(pos!=-1
+                   ?"Recursive Binary Search. ARRAY4\n"
+                   +"The word ["+word+"] exists at position: "+pos
+                   :"The word ["+word+"] does not exist"
+        );
+        }
+        
+         //array5
+        Search s5 = new Search();
+        for (int i = 0; i < 20; i++) {
+            Object object = array5[i];
+            int value = util.Utility.random();
+            int pos = s5.binarySearch(array5, value);
+            System.out.println(pos != -1
+                    ? "Iteractive Binary Search. ARRAY5\n"
+                    + "The value [" + value + "] exists at position: " + pos
+                    : "The value [" + value + "] does not exist"
+            );
+            pos = s5.binarySearch(array5, value, 0, array5.length-1);
+        System.out.println(pos!=-1
+                   ?"Recursive Binary Search. ARRAY5\n"
+                   +"The value ["+value+"] exists at position: "+pos
+                   :"The value ["+value+"] does not exist"
+        );
+        }
+        
+         //array6
+        Search s6 = new Search();
+        for (int i = 0; i < 20; i++) {
+            Object object = array6[i];
+            String word = GenerarPalabra();
+            int pos = s6.binarySearch(array6, word);
+            System.out.println(pos != -1
+                    ? "Iteractive Binary Search. ARRAY6\n"
+                    + "The word [" + word + "] exists at position: " + pos
+                    : "The word [" + word + "] does not exist"
+            );
+            pos = s6.binarySearch(array6, word, 0, array6.length-1);
+        System.out.println(pos!=-1
+                   ?"Recursive Binary Search. ARRAY6\n"
+                   +"The word ["+word+"] exists at position: "+pos
+                   :"The word ["+word+"] does not exist"
+        );
+        }
     }
-   
+
    private void fill(String name, Object[] a) {
         switch (name) {
             case "array1"://enteros
@@ -142,19 +255,14 @@ public class ComplexNGTest {
 
    //nos genera palabras aleatorias
     public String GenerarPalabra(){		
-		String palabra = "";
-		//La longitud de la palabra la decidimos al azar
-		int longitud = (int)(Math.random() * 9) + 1;
-		//Generamos palabra
-		for (int i=0; i<longitud; i++){
-			int codigoAscii = (int)Math.floor(Math.random()*(122 -
-					97)+97);
-
-			//para pasar el código a carácter lo hago con hacer un cast a char
-			palabra = palabra + (char)codigoAscii;
-		}
-		return palabra;
-	}
+        String[] palabras = {"Luna", "sol", "Playa", "Francia", "Colombia", "Futbol", "Hockey", "Nubes", "Agua", "Amor", "Tristeza"};
+        String palabra = "";
+        //Generamos palabra
+        for (int i = 0; i < palabras.length; i++) {
+            palabra = palabras[(int) (Math.random() * (9))];
+        }
+        return palabra;
+    }
     
 
       private boolean isSorted(int[] a) {

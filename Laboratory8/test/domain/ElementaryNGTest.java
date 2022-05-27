@@ -146,19 +146,14 @@ public class ElementaryNGTest {
     
     //nos genera palabras aleatorias
     public String GenerarPalabra(){		
-		String palabra = "";
-		//La longitud de la palabra la decidimos al azar
-		int longitud = (int)(Math.random() * 9) + 1;
-		//Generamos palabra
-		for (int i=0; i<longitud; i++){
-			int codigoAscii = (int)Math.floor(Math.random()*(122 -
-					97)+97);
-
-			//para pasar el código a carácter lo hago con hacer un cast a char
-			palabra = palabra + (char)codigoAscii;
-		}
-		return palabra;
-	}
+        String[] palabras = {"Luna", "sol", "Playa", "Francia", "Colombia", "Futbol", "Hockey", "Nubes", "Agua", "Amor", "Tristeza"};
+        String palabra = "";
+        //Generamos palabra
+        for (int i = 0; i < palabras.length; i++) {
+            palabra = palabras[(int) (Math.random() * (9))];
+        }
+        return palabra;
+    }
 
     private String show(Object[] a, int n) {
         String result = "";
