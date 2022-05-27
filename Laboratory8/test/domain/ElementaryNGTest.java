@@ -16,13 +16,7 @@ public class ElementaryNGTest {
 
     //CORRECIONES: 
     //1. En el array 3 se debe recorrer de menor a mayor, o sea por ej: -10, -9, -8 etc, y lo está recorriendo así: -8, -9, -10
-    //2. Hacer el array 6 de palabras
-    //Compruebe el funcionamiento de la clase “Elementary” a través de una prueba unitaria
-    //(Unit Testing), de la siguiente forma:
-    //a. Cree, instancie y llene 6 arreglos de la siguiente forma: array1 (mil números enteros),
-    //array2 (mil letras del alfabeto), array3 (mil números negativos), array4 (mil números
-    //pares), array5 (mil números impares), array6 (mil palabras).
-    //b. Muestre el contenido de los primeros 200 elementos de cada a
+    
     @Test
     public void testSomeMethod() {
         //a. Cree, instancie y llene 6 arreglos de la siguiente forma:
@@ -55,7 +49,7 @@ public class ElementaryNGTest {
         System.out.println("Array 5 of odd numbers = " + show(array5, 200));
         System.out.println("Array 6 of words = " + show(array6, 200));
 
-        //c. Cree e instancie un objeto tipo Elementary llamado “sort.
+        
         Elementary sort = new Elementary();
 
         //Utilice el método anterior, compruebe y ordene cada arreglo indicado de acuerdo a los siguientes criterios:
@@ -144,14 +138,14 @@ public class ElementaryNGTest {
                 break;
             case "array6"://palabras
                 for (int i = 0; i < a.length; i++) {
-                    a[i]=GenerarPalabra();
+                    a[i]=" "+GenerarPalabra()+",";
                 }
               
         }
     }//end fillArrays
     
-    public String GenerarPalabra(){
-		//La variable palabra almacena el resultado final
+    //nos genera palabras aleatorias
+    public String GenerarPalabra(){		
 		String palabra = "";
 		//La longitud de la palabra la decidimos al azar
 		int longitud = (int)(Math.random() * 9) + 1;
@@ -160,7 +154,7 @@ public class ElementaryNGTest {
 			int codigoAscii = (int)Math.floor(Math.random()*(122 -
 					97)+97);
 
-			//para pasar el código a carácter basta con hacer un cast a char
+			//para pasar el código a carácter lo hago con hacer un cast a char
 			palabra = palabra + (char)codigoAscii;
 		}
 		return palabra;
