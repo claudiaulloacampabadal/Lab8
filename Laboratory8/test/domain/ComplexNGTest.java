@@ -57,32 +57,41 @@ public class ComplexNGTest {
         //ordenamos los arreglos
         Complex sort = new Complex();
         //array 1 ordenado
-        sort.quickSort(array1, 0, array1.length-1);  
-         //array 2 ordenado
-        sort.shellSort(array2);
-         //array 3 ordenado
-        String temp[]=new String[201];
-        sort.mergeSort(array3, temp, 0, array3.length-1);
-         //array 4 ordenado
-         sort.shellSort(array4);
-          //array 5 ordenado INCOMPLETO
-          //sort.radixSort(a, 0);
-          //array 6 ordenado
-        String temp2[]=new String[201];
-        sort.mergeSort(array6, temp2, 0, array6.length-1);
-        
-        System.out.println("Array 1 (QuickSort)" + util.Utility.show(array1, 200));
-        System.out.println("Array 2 (shellSort)" + util.Utility.show(array2, 200));
-        System.out.println("Array 3 (mergeSort)" + util.Utility.show(array3, 200));
-        System.out.println("Array 4 (shellSort)" + util.Utility.show(array4, 200));
-        //System.out.println("Array 2 (shellSort)" + util.Utility.show(array2, 200));
-        System.out.println("Array 6 (mergeSort)" + util.Utility.show(array6, 200));
-        
-        
+        if (!isSorted(array1)) {
+            sort.quickSort(array1, 0, array1.length - 1);
+        }
+        System.out.println("Array 1 (QuickSort)" + util.Utility.show(array1, 100));
+        //array 2 ordenado
+        if (!isSorted(array2)) {
+            sort.shellSort(array2);
+        }
+        System.out.println("Array 2 (shellSort)" + util.Utility.show(array2, 100));
+
+        //array 3 ordenado
+        if (!isSorted(array3)) {
+            String temp[] = new String[1000];
+            sort.mergeSort(array3, temp, 0, array3.length - 1);
+        }
+        System.out.println("Array 3 (mergeSort)" + util.Utility.show(array3, 100));
+        //array 4 ordenado
+        if (!isSorted(array4)) {
+            sort.shellSort(array4);
+        }
+        System.out.println("Array 4 (shellSort)" + util.Utility.show(array4, 100));
+        //array 5 ordenado INCOMPLETO
+        //sort.radixSort(a, 0);
+        //array 6 ordenado
+        if (!isSorted(array6)) {
+            String temp2[] = new String[1000];
+            sort.mergeSort(array6, temp2, 0, array6.length - 1);
+        }
+        System.out.println("Array 6 (mergeSort)" + util.Utility.show(array6, 100));
+
+        //System.out.println("Array 2 (shellSort)" + util.Utility.show(array2, 100));
 //        System.out.println("Array 2 CONTENT: "+ util.Utility.show(array2, 9));
 //        String temp[] = new String[10];
 //        sort.mergeSort(array2, temp, 0, array2.length-1);
-    
+
     
     }
    
@@ -137,4 +146,21 @@ public class ComplexNGTest {
 		}
 		return palabra;
 	}
+    
+    private String show(Object[] a, int n) {
+        String result = "";
+        for (int i = 0; i < n; i++) {
+            result += a[i] + "";
+        }
+        return result;
+    }//end show
+    
+    private boolean isSorted(Object[] a) {
+        for (int i = 0; i < a.length - 1; i++) {
+            if (util.Utility.greaterT(a[i], a[i + 1])) {
+                return false;
+            }
+        }
+        return true;
+    }//end is Sorted
 }
