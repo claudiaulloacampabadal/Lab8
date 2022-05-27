@@ -28,7 +28,8 @@ public class ComplexNGTest {
         //array4 (mil palabras)
         Object array4[] = new Object[1000];
         //array5 (mil valores numericos)
-        Object array5[] = new Object[1000];
+        //el array 5 lo manejo como int para poder ordenarlo con radixSort
+        int array5[] = new int[1000];
         //array6 (mil palabras)
         Object array6[] = new Object[1000];
 
@@ -36,7 +37,7 @@ public class ComplexNGTest {
         fill("array2",array2);
         fill("array3",array3);
         fill("array4",array4);
-        fill("array5",array5);
+        fill5("array5",array5);
         fill("array6",array6);
         
 
@@ -50,7 +51,7 @@ public class ComplexNGTest {
         //array4
         System.out.println("Array- 4 CONTENT: " + util.Utility.show(array4, 200));
         //array5
-        System.out.println("Array- 5 CONTENT: " + util.Utility.show(array5, 200));
+        System.out.println("Array- 5 CONTENT: " + util.Utility.show(array5));
         //array6
         System.out.println("Array- 6 CONTENT: " + util.Utility.show(array6, 200));
         
@@ -78,8 +79,13 @@ public class ComplexNGTest {
             sort.shellSort(array4);
         }
         System.out.println("Array 4 (shellSort)" + util.Utility.show(array4, 100));
-        //array 5 ordenado INCOMPLETO
-        //sort.radixSort(a, 0);
+        
+        //array 5 ordenado   
+//        if (!isSorted(array5)) {
+//            sort.radixSort(array5, 0);
+//        }
+//        System.out.println("Array 5 (radixSort)" + util.Utility.show(array5));
+
         //array 6 ordenado
         if (!isSorted(array6)) {
             String temp2[] = new String[1000];
@@ -87,12 +93,7 @@ public class ComplexNGTest {
         }
         System.out.println("Array 6 (mergeSort)" + util.Utility.show(array6, 100));
 
-        //System.out.println("Array 2 (shellSort)" + util.Utility.show(array2, 100));
-//        System.out.println("Array 2 CONTENT: "+ util.Utility.show(array2, 9));
-//        String temp[] = new String[10];
-//        sort.mergeSort(array2, temp, 0, array2.length-1);
-
-    
+      
     }
    
    private void fill(String name, Object[] a) {
@@ -130,6 +131,14 @@ public class ComplexNGTest {
               
         }
     }//end fillArrays
+   
+   //creo un metodo que recibe un int para array5 que tiene que ser int para ordenarlo con radixSort
+    public void fill5(String name, int[] a) {
+        for (int i = 0; i < a.length; i++) {
+            a[i] = util.Utility.random();
+        }
+    }
+           
 
    //nos genera palabras aleatorias
     public String GenerarPalabra(){		
@@ -147,14 +156,16 @@ public class ComplexNGTest {
 		return palabra;
 	}
     
-    private String show(Object[] a, int n) {
-        String result = "";
-        for (int i = 0; i < n; i++) {
-            result += a[i] + "";
+
+      private boolean isSorted(int[] a) {
+        for (int i = 0; i < a.length - 1; i++) {
+            if (util.Utility.greaterT(a[i], a[i + 1])) {
+                return false;
+            }
         }
-        return result;
-    }//end show
-    
+        return true;
+    }//end is Sorted
+       
     private boolean isSorted(Object[] a) {
         for (int i = 0; i < a.length - 1; i++) {
             if (util.Utility.greaterT(a[i], a[i + 1])) {
