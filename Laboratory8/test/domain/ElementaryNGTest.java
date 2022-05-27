@@ -142,10 +142,29 @@ public class ElementaryNGTest {
                 }
 
                 break;
-            //acá iria el array 6 
+            case "array6"://palabras
+                for (int i = 0; i < a.length; i++) {
+                    a[i]=GenerarPalabra();
+                }
+              
         }
-
     }//end fillArrays
+    
+    public String GenerarPalabra(){
+		//La variable palabra almacena el resultado final
+		String palabra = "";
+		//La longitud de la palabra la decidimos al azar
+		int longitud = (int)(Math.random() * 9) + 1;
+		//Generamos palabra
+		for (int i=0; i<longitud; i++){
+			int codigoAscii = (int)Math.floor(Math.random()*(122 -
+					97)+97);
+
+			//para pasar el código a carácter basta con hacer un cast a char
+			palabra = palabra + (char)codigoAscii;
+		}
+		return palabra;
+	}
 
     private String show(Object[] a, int n) {
         String result = "";
